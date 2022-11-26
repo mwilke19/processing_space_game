@@ -1,3 +1,4 @@
+//I used this file to test the Particle class
 import java.util.Iterator;
 ArrayList<Particle> stars;
 
