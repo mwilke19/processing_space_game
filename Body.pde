@@ -1,9 +1,8 @@
-int x, y, speed;
-class Body { //Body handles actors drawn to the screen
+class Body extends PVector{ //Body handles actors drawn to the screen
+    int speed;
     Body(int x_, int y_, int speed_) {
-    x =  x_;
-    y =  y_;
-    speed = speed_;
+      super(x_,y_);
+      speed = speed_;
   }// close Body constructor
   void move(String direction) {//method to move the ship based on arguments passed from inputHandler instance of the Mover class
     if (direction == "up")y-=speed;
