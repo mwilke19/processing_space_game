@@ -12,6 +12,7 @@ class Asteroid {
     acceleration = new PVector(-.03, 0);
     velocity = new PVector(-.003, 0);
     size = random(25, 100);
+    location.add(size,0);
   }//close Asteroid constructor
   void run() {
     update();
