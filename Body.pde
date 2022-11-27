@@ -1,5 +1,5 @@
 class Body extends PVector{ //Body handles actors drawn to the screen
-    int speed;
+    int x, y, speed;
     Body(int x_, int y_, int speed_) {
       super(x_,y_);
       speed = speed_;
