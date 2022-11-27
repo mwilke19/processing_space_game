@@ -3,9 +3,9 @@ ArrayList<Particle> stars;
 ArrayList<Asteroid> asteroids;
 void setup() {
   size(800, 800);
-  x = width/2;
-  y = height/2;
-  speed = 5;
+  int x = width/2;
+  int y = height/2;
+  int speed = 5;
   lastAdd = 0;
   spaceShip = new SpaceShip(x,y,speed);
   inputHandler = new Mover(spaceShip);
