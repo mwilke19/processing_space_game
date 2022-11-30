@@ -1,7 +1,8 @@
 SpaceShip ship;
-class SpaceShip extends Body{//handles creation,boundaries of the ship
-  SpaceShip(int x_,int y_) {
-    super(x_,y_,5);
+Laser laser;
+class SpaceShip extends Body {//handles creation,boundaries of the ship
+  SpaceShip(int x_, int y_) {
+    super(x_, y_, 5);
   }//close SpaceShip constructor
   void show() {//method to draw the ship on the screen
     stroke(5);
@@ -24,6 +25,16 @@ class SpaceShip extends Body{//handles creation,boundaries of the ship
         this.y = 0;
       }
     }
-    //println("setShipBoundaries has executed\n");
   }//close setShipBoundaries()
 }//close SpaceShip()
+
+class Laser extends Body {//extends Body handles laser weapon
+  Laser(int x_, int y_) {
+    super(x_, y_, 5);
+  }//close Laser constructor
+  void fire() {//method to fire laser across screen
+    strokeWeight(3);
+    stroke(255, 255, 0);
+    line(ship.x, ship.y, width, ship.y);
+  }//close fire
+}//close Laser class
