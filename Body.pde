@@ -1,4 +1,4 @@
-class Body extends PVector { //Body handles actors drawn to the screen
+class Body extends PVector { //Body provides x,y, and speed variables and ship movement
   int speed;
   Body(int x_, int y_, int speed_) {
     super();
@@ -11,5 +11,6 @@ class Body extends PVector { //Body handles actors drawn to the screen
     if (direction == "down") this.add(0, this.speed);
     if (direction == "left")this.add(-this.speed, 0);
     if (direction == "right")this.add(this.speed, 0);
+    if (direction == "fire")runBulletSystem();
   }//close move()
 }//close Body class

@@ -1,4 +1,6 @@
 Particle star;
+int lastStar;
+int delayStar = 25;
 class Particle {
   PVector location;
   PVector velocity;
@@ -10,7 +12,7 @@ class Particle {
     acceleration = new PVector(-.01, 0);
     velocity = new PVector(-.01, 0);
     lifespan = 255 ;
-    size = random(1, 5);
+    size = random(1, 6);
   }//close Particle constructor
   void run() {//updates posistion and shape
     update();
@@ -24,8 +26,8 @@ class Particle {
     lifespan -= 3.0;
   }
   void display() {//method to display ship on the screen
-    stroke(0, lifespan);
-    fill(255, lifespan);
+    stroke(0);
+    fill(255);
     ellipse(location.x, location.y, size, size);
   }
   boolean isDead() {//method to track particle lifetime
@@ -37,7 +39,12 @@ class Particle {
   }
 }//close Particle class
 void runStarSystem() {//method to add stars to the screen and remove them when they are dead
-  stars.add(new Particle(new PVector(random(width), random(height))));
+  int current = millis();
+  int deltaTime = current - lastStar;
+  if(lastStar == 0 || deltaTime >= delayStar){
+    stars.add(new Particle(new PVector(random(width), random(height))));
+    lastStar = current;
+  }
   Iterator<Particle> it = stars.iterator();
   while (it.hasNext()) {
     Particle star = it.next();

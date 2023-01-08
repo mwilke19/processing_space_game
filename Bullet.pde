@@ -1,16 +1,16 @@
 Bullet bullet;
 class Bullet {
-  PVector location;
+  PVector bulletLocation;
   PVector velocity;
   PVector acceleration;
   float size;
   float lifespan;
   Bullet(PVector bullet) {
-    location = bullet.copy();
+    bulletLocation = bullet.copy();
     acceleration = new PVector(2, 0);
     velocity = new PVector(2, 0);
     size = 8;
-    lifespan = 25;
+    lifespan = 15        ;
   }
   void run() {
     update();
@@ -18,19 +18,20 @@ class Bullet {
   }
   void update() {
     velocity.add(acceleration);
-    location.add(velocity);
-    //lifespan-= 1;
-    //println("lifespan = " + lifespan);
+    bulletLocation.add(velocity);
+    lifespan-= 1;
+    println("lifespan = " + lifespan);
   }
   void display() {
     stroke(5);
     fill(255, 0, 0);
-    ellipse(location.x, location.y, size, size);
-    println("location.x = "+ location.x);
-    println("location.y = "+ location.y);
+    ellipse(bulletLocation.x, bulletLocation.y, size, size);
+    println("bulletLocation.x = "+ bulletLocation.x);
+    println("bulletLocation.y = "+ bulletLocation.y);
+    println("\n");           
   }
   boolean isDead() {
-    if (location.x >= width) {
+    if (bulletLocation.x >= width || lifespan <= 0             ) {
       return true;
     } else {
       return false;
@@ -38,7 +39,6 @@ class Bullet {
   }
 }
 void runBulletSystem() {
-
   bullets.add(new Bullet(new PVector(ship.x, ship.y)));
   Iterator<Bullet> it = bullets.iterator();
   while (it.hasNext()) {

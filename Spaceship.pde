@@ -31,10 +31,13 @@ class SpaceShip extends Body {//handles creation,boundaries of the ship
 class Laser extends Body {//extends Body handles laser weapon
   Laser(int x_, int y_) {
     super(x_, y_, 5);
-  }//close Laser constructor
+    }//close Laser constructor
   void fire() {//method to fire laser across screen
+    float lineLen = 0;
     strokeWeight(3);
     stroke(255, 255, 0);
     line(ship.x, ship.y, width, ship.y);
+    lineLen = width - ship.x;
+    println("line length = " + lineLen);
   }//close fire
 }//close Laser class
